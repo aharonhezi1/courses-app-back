@@ -4,10 +4,15 @@ const mysql = require("mysql");
 const auth = require("../middleware/auth");
 
 const coursesDB = {
-  host: "localhost",
-  //host: "courses-app2.cja4hsljqmhm.us-east-1.rds.amazonaws.com",
-  user: "root",
-  password: "",
+ // host: "localhost",
+ //user: "root",
+ //password: "",
+  // host: "database-course-app.cwyvcashrxzi.us-east-1.rds.amazonaws.com",
+  // user:"admin",
+  // password:"database-course-app",
+  host: process.env.DB_HOST || "localhost",
+  user:process.env.DB_USER || "root",
+  password:process.env.DB_PASSWORD|| "",
   database: "college"
 };
 

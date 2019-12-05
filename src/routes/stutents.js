@@ -8,11 +8,11 @@ const auth = require("../middleware/auth");
 const authPassword = require("../middleware/authPassword");
 
 const coursesDB = {
-  host: "localhost",
-  //host: "courses-app2.cja4hsljqmhm.us-east-1.rds.amazonaws.com",
-  user: "root",
-  password: "",
+  host: process.env.DB_HOST || "localhost",
+  user:process.env.DB_USER || "root",
+  password:process.env.DB_PASSWORD|| "",
   database: "college"
+
 };
 
 //login
