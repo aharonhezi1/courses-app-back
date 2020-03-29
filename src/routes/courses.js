@@ -3,18 +3,19 @@ const router = new express.Router();
 const mysql = require("mysql");
 const auth = require("../middleware/auth");
 
-const coursesDB = {
- // host: "localhost",
- //user: "root",
- //password: "",
-  // host: "database-course-app.cwyvcashrxzi.us-east-1.rds.amazonaws.com",
-  // user:"admin",
-  // password:"database-course-app",
-  host: process.env.DB_HOST || "localhost",
-  user:process.env.DB_USER || "root",
-  password:process.env.DB_PASSWORD|| "",
-  database: "college"
-};
+const coursesDB =  require('../db-config')
+// {
+//  host: "localhost",
+//  user: "root",
+//  password: "",
+//   // host: "database-course-app.cwyvcashrxzi.us-east-1.rds.amazonaws.com",
+//   // user:"admin",
+//   // password:"database-course-app",
+//   // host: process.env.DB_HOST || "localhost",
+//   // user:process.env.DB_USER || "root",
+//   // password:process.env.DB_PASSWORD|| "",
+//   // database: "college"
+// };
 
 router.get("/api/courses", async (req, res) => {
   const connection = mysql.createConnection(coursesDB);
@@ -24,7 +25,11 @@ router.get("/api/courses", async (req, res) => {
     fields
   ) {
     if (error) res.send(error);
-    else res.send(results);
+   
+    else{
+      console.log(results);
+      res.send(results);
+    } 
   });
   connection.end();
 });

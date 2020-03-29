@@ -7,12 +7,18 @@ const mysqlAsync =require('mysql2/promise');
 const authStaff= require('../middleware/authStaff')
 const authPassword = require("../middleware/authPassword");
 
-const coursesDB = {
-  host: process.env.DB_HOST || "localhost",
-  user:process.env.DB_USER || "root",
-  password:process.env.DB_PASSWORD|| "",
-  database: "college"
-};
+const coursesDB = require('../db-config')
+//{
+  // host: process.env.DB_HOST || "localhost",
+  // user:process.env.DB_USER || "root",
+  // password:process.env.DB_PASSWORD|| "",
+//   host: "localhost",
+//   user: "root",
+//   password: "",
+//   database: "college"
+// };
+
+
 // create student token
 router.get('/api/token',authStaff,(req, res) => {
   const id= req.id
